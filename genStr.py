@@ -17,11 +17,11 @@ from creds import Credentials
 
 API_TEXT = """👋🏻 **Hi {}**,
 
-I'm **String Session Generator** \nI Can Generate Pyrogram's String Session Of Your Telegram Account.
+I'm **Emo String Session Generator** \nI Can Generate Pyrogram's String Session Of Your Telegram Account.
 
 Now Send Your `API_ID` Same As `APP_ID` To Start Generating Session.
 
-Get API_ID from https://my.telegram.org"""
+Get API_ID & API_HASH from https://my.telegram.org"""
 HASH_TEXT = "Now Send Your `API_HASH`.\n\nGet API_HASH From https://my.telegram.org\n\nPress /cancel to Cancel Task."
 PHONE_NUMBER_TEXT = (
     "Now Send Your Telegram Account's Phone Number in International Format. \n"
@@ -30,14 +30,14 @@ PHONE_NUMBER_TEXT = (
 )
 
 
-UPDATES_CHANNEL = os.environ.get('UPDATES_CHANNEL', 'AsmSafone')
+UPDATES_CHANNEL = os.environ.get('UPDATES_CHANNEL', 'EmoBotDevolopers')
 
 @bot.on_message(filters.private & filters.command("start"))
 async def genStr(_, msg: Message):
     if msg.chat.id in Credentials.BANNED_USERS:
         await bot.send_message(
             chat_id=msg.chat.id,
-            text="You are Banned. Contact My [Support Group](https://t.me/safothebot)",
+            text="You are Banned. Contact My [Support Group](https://t.me/EmoBotSupport)",
             reply_to_message_id=msg.message_id
         )
         return
@@ -49,7 +49,7 @@ async def genStr(_, msg: Message):
             if user.status == "kicked":
                await bot.send_message(
                    chat_id=msg.chat.id,
-                   text="Sorry Sir, You are Banned. Contact My [Support Group](https://t.me/safothebot).",
+                   text="Sorry Sir, You are Banned. Contact My [Support Group](https://t.me/EmoBotSupport).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
@@ -71,7 +71,7 @@ async def genStr(_, msg: Message):
         except Exception:
             await bot.send_message(
                 chat_id=msg.chat.id,
-                text="**Something Went Wrong. Contact My [Support Group](https://t.me/safothebot).**",
+                text="**Something Went Wrong. Contact My [Support Group](https://t.me/EmoBotSupport).**",
                 parse_mode="markdown",
                 disable_web_page_preview=True
             )
@@ -174,9 +174,9 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
-        await client.send_message("me", f"#PYROGRAM #STRING_SESSION \n\n```{session_string}``` \n\nBy [String Session Generator](http://t.me/genStr_robot) 🤖\nMade with ❤️ By @AsmSafone! 👑")
+        await client.send_message("me", f"#PYROGRAM #STRING_SESSION \n\n```{session_string}``` \n\nBy [String Session Generator](http://t.me/emStringGen_Bot) 🤖\nMade with ❤️ By @EmoBotDevolopers 👑")
         await client.disconnect()
-        text = "String Session is Successfully ✅ Generated.\nClick On Below Button To Get."
+        text = "String Session is Successfully ✅ Generated.\nClick On Below Button To Get. 🔥 Powerd By @EmoBotDevolopers"
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="SHOW STRING SESSION", url=f"tg://openmessage?user_id={chat.id}")]]
         )
@@ -205,15 +205,17 @@ You Have to Put **OTP** in `1 2 3 4 5` This Format. __(Space between each number
 **NOTE:** If Bot Not Sending OTP to Your Phone Number than send /restart Command & Again Send /start to Start Your Process. 
 
 Must Join Channel for Bot Updates !!
+
+🔥Powerd By @EmoBotDevolopers
 """
     reply_markup = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton('CHANNEL', url='https://t.me/AsmSafone'),
-                InlineKeyboardButton('SUPPORT', url='https://t.me/Safothebot')
+                InlineKeyboardButton('CHANNEL', url='https://t.me/EmoBotDevolopers'),
+                InlineKeyboardButton('SUPPORT', url='https://t.me/EmoBotSupport)
             ],
             [
-                InlineKeyboardButton('DEVELOPER', url='https://t.me/I_Am_Only_One_1'),
+                InlineKeyboardButton('DEVELOPER', url='https://t.me/ImRishmik'),
             ]
         ]
     )
